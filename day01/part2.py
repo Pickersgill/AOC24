@@ -5,8 +5,15 @@ with open("./day1.data") as data:
     vals = np.array([[int(line[0]), int(line[1])] for line in lines])
     vals = vals.T
 
-vals1 = np.sort(vals[0])
-vals2 = np.sort(vals[1])
 
-print(sum(abs(vals2 - vals1)))
+vals1 = np.unique(vals[0])
+vals2 = vals[1]
+
+total = 0
+for v in vals1:
+    occurs = sum(vals2 == v)
+    total += occurs * v
+
+print(total)
+
 
